@@ -1,0 +1,9 @@
+- key: stocksbeat
+  title: stocksbeat
+  description:
+  fields:
+    - name: counter
+      type: long
+      required: true
+      description: >
+        PLEASE UPDATE DOCUMENTATION

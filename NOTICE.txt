@@ -1,0 +1,5 @@
+stocksbeat
+Copyright {year} Anish Mashankar
+
+This product includes software developed by The Apache Software
+Foundation (http://www.apache.org/).
