@@ -3,8 +3,11 @@
 ############################# {Beat} ######################################
 
 stocksbeat:
-  # Defines how often an event is sent to the output
-  period: 1s
+  symbols:
+    - AAPL
+    - MSFT
+    - AMZN
+  finnhubToken: "insertTheGeneratedTokenHere"
 
 # ================================== General ===================================
 
@@ -67,10 +70,14 @@ setup.kibana:
 
 # Configure what output to use when sending the data collected by the beat.
 
+output.console:
+  enabled: true
+
 # ---------------------------- Elasticsearch Output ----------------------------
 output.elasticsearch:
   # Array of hosts to connect to.
   hosts: ["localhost:9200"]
+  enabled: false
 
   # Protocol - either `http` (default) or `https`.
   #protocol: "https"

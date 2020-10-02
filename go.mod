@@ -29,6 +29,7 @@ require (
 	github.com/elastic/go-sysinfo v1.4.0 // indirect
 	github.com/fatih/color v1.9.0 // indirect
 	github.com/go-sourcemap/sourcemap v2.1.3+incompatible // indirect
+	github.com/gorilla/websocket v1.4.1
 	github.com/hashicorp/errwrap v1.1.0 // indirect
 	github.com/josephspurrier/goversioninfo v1.2.0 // indirect
 	github.com/magefile/mage v1.10.0

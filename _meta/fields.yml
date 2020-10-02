@@ -1,9 +1,17 @@
 - key: stocksbeat
   title: stocksbeat
-  description:
+  description: >
+    Beat for getting live trades on a stock symbol
   fields:
-    - name: counter
-      type: long
+    - name: trade
+      type: group
       required: true
       description: >
-        PLEASE UPDATE DOCUMENTATION
+        Fields from the collected trade document
+      fields:
+        - name: price
+          type: float
+        - name: volume
+          type: long
+        - name: symbol
+          type: keyword

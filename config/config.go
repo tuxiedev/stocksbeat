@@ -3,12 +3,12 @@
 
 package config
 
-import "time"
 
 type Config struct {
-	Period time.Duration `config:"period"`
+	Symbols 		[]string     `config:"symbols"`
+	FinnhubToken	string		 `config:"finnhubToken"`
 }
 
 var DefaultConfig = Config{
-	Period: 1 * time.Second,
+	Symbols: make([]string, 0),
 }

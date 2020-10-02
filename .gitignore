@@ -5,3 +5,7 @@
 /stocksbeat
 /stocksbeat.test
 *.pyc
+
+data/
+logs/
+stocksbeat-dev.y*ml

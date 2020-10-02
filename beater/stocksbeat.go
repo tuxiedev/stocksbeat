@@ -1,8 +1,11 @@
 package beater
 
 import (
+	"encoding/json"
 	"fmt"
 	"time"
+
+	"github.com/gorilla/websocket"
 
 	"github.com/elastic/beats/v7/libbeat/beat"
 	"github.com/elastic/beats/v7/libbeat/common"
@@ -25,6 +28,7 @@ func New(b *beat.Beat, cfg *common.Config) (beat.Beater, error) {
 		return nil, fmt.Errorf("Error reading config file: %v", err)
 	}
 
+
 	bt := &stocksbeat{
 		done:   make(chan struct{}),
 		config: c,
@@ -35,32 +39,48 @@ func New(b *beat.Beat, cfg *common.Config) (beat.Beater, error) {
 // Run starts stocksbeat.
 func (bt *stocksbeat) Run(b *beat.Beat) error {
 	logp.Info("stocksbeat is running! Hit CTRL-C to stop it.")
-
 	var err error
 	bt.client, err = b.Publisher.Connect()
 	if err != nil {
 		return err
 	}
 
-	ticker := time.NewTicker(bt.config.Period)
-	counter := 1
+	w, _, err := websocket.DefaultDialer.Dial("wss://ws.finnhub.io?token="+bt.config.FinnhubToken, nil)
+	if err != nil {
+		panic(err)
+	}
+	// logp.Info("Connected to finnhub websocket")
+
+	for _, s := range bt.config.Symbols {
+		msg, _ := json.Marshal(map[string]interface{}{"type": "subscribe", "symbol": s})
+		w.WriteMessage(websocket.TextMessage, msg)
+	}
+
+	var msg WebSocketResponse
 	for {
 		select {
 		case <-bt.done:
+			w.Close()
 			return nil
-		case <-ticker.C:
+		default:
+			err := w.ReadJSON(&msg)
+			if err != nil {
+				panic(err)
+			}
+			trade := msg.Data[0]
+			event := beat.Event{
+				Timestamp: time.Unix(0, trade.Time),
+				Fields: common.MapStr{
+					"type": "trade",
+					"trade": common.MapStr{
+						"price":  trade.Price,
+						"volume": trade.Volume,
+						"symbol": trade.Symbol,
+					},
+				},
+			}
+			bt.client.Publish(event)
 		}
-
-		event := beat.Event{
-			Timestamp: time.Now(),
-			Fields: common.MapStr{
-				"type":    b.Info.Name,
-				"counter": counter,
-			},
-		}
-		bt.client.Publish(event)
-		logp.Info("Event sent")
-		counter++
 	}
 }
 
