@@ -1,13 +1,10 @@
-- key: stocksbeat
-  title: stocksbeat
+- key: trade
+  title: stocksbeat.trade
   description: >
     Beat for getting live trades on a stock symbol
   fields:
     - name: trade
       type: group
-      required: true
-      description: >
-        Fields from the collected trade document
       fields:
         - name: price
           type: float

@@ -3,8 +3,11 @@
 ############################# {Beat} ######################################
 
 stocksbeat:
-  # Defines how often an event is sent to the output
-  period: 1s
+  symbols:
+    - AAPL
+    - MSFT
+    - AMZN
+  finnhubToken: foobarbarFooo
 
 # ================================== General ===================================
 

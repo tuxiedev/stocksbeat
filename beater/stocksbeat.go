@@ -28,7 +28,6 @@ func New(b *beat.Beat, cfg *common.Config) (beat.Beater, error) {
 		return nil, fmt.Errorf("Error reading config file: %v", err)
 	}
 
-
 	bt := &stocksbeat{
 		done:   make(chan struct{}),
 		config: c,
@@ -69,7 +68,7 @@ func (bt *stocksbeat) Run(b *beat.Beat) error {
 			}
 			trade := msg.Data[0]
 			event := beat.Event{
-				Timestamp: time.Unix(0, trade.Time),
+				Timestamp: time.Unix(0, trade.Time*int64(time.Millisecond)),
 				Fields: common.MapStr{
 					"type": "trade",
 					"trade": common.MapStr{

@@ -20,7 +20,7 @@ grouped in the following categories:
 * <<exported-fields-jolokia-autodiscover>>
 * <<exported-fields-kubernetes-processor>>
 * <<exported-fields-process>>
-* <<exported-fields-stocksbeat>>
+* <<exported-fields-trade>>
 
 --
 [[exported-fields-beat-common]]
@@ -8689,21 +8689,32 @@ alias to: process.executable
 
 --
 
-[[exported-fields-stocksbeat]]
-== stocksbeat fields
+[[exported-fields-trade]]
+== stocksbeat.trade fields
 
-None
+Beat for getting live trades on a stock symbol
 
 
-*`counter`*::
+
+
+*`trade.price`*::
 +
 --
-PLEASE UPDATE DOCUMENTATION
+type: float
 
+--
 
+*`trade.volume`*::
++
+--
 type: long
 
-required: True
+--
+
+*`trade.symbol`*::
++
+--
+type: keyword
 
 --
 

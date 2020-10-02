@@ -1,0 +1,34 @@
+version: '2.2'
+
+networks:
+    elastic:
+
+volumes:
+  esdata:
+    driver: local
+
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.9.2
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    networks:
+      - elastic
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.9.2
+    container_name: kibana
+    ports:
+      - 5601:5601
+    environment:
+      ELASTICSEARCH_HOSTS: http://elasticsearch:9200
+    networks:
+      - elastic
