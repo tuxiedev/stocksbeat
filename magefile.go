@@ -32,7 +32,7 @@ func Package() {
 	start := time.Now()
 	defer func() { fmt.Println("package ran for", time.Since(start)) }()
 
-	devtools.UseCommunityBeatPackaging()
+	devtools.LoadNamedSpec("community_beat", "dev-tools/packaging/packaging.yaml")
 
 	mg.Deps(Update)
 	mg.Deps(build.CrossBuild, build.CrossBuildGoDaemon)

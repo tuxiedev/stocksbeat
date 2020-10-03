@@ -7,7 +7,7 @@ stocksbeat:
     - AAPL
     - MSFT
     - AMZN
-  finnhubToken: ${FINNHUB_TOKEN}
+  finnhubToken: foobarbarFooo
 
 # ================================== General ===================================
 
