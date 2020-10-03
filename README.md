@@ -1,18 +1,27 @@
-# {Beat}
+# stocksbeat
 
-Welcome to {Beat}.
+Welcome to stocksbeat.
 
 Ensure that this folder is at the following location:
 `${GOPATH}/src/github.com/tuxiedev/stocksbeat`
 
-## Getting Started with {Beat}
+## Development
 
 ### Requirements
 
 * [Golang](https://golang.org/dl/) 1.7
 
+### Clone
+
+To clone stocksbeat from the git repository, run the following commands:
+
+```
+mkdir -p ${GOPATH}/src/github.com/tuxiedev/stocksbeat
+git clone https://github.com/tuxiedev/stocksbeat ${GOPATH}/src/github.com/tuxiedev/stocksbeat
+```
+
 ### Init Project
-To get running with {Beat} and also install the
+To get running with stocksbeat and also install the
 dependencies, run the following command:
 
 ```
@@ -21,18 +30,9 @@ make setup
 
 It will create a clean git history for each major step. Note that you can always rewrite the history if you wish before pushing your changes.
 
-To push {Beat} in the git repository, run the following commands:
-
-```
-git remote set-url origin https://github.com/tuxiedev/stocksbeat
-git push origin master
-```
-
-For further development, check out the [beat developer guide](https://www.elastic.co/guide/en/beats/libbeat/current/new-beat.html).
-
 ### Build
 
-To build the binary for {Beat} run the command below. This will generate a binary
+To build the binary for stocksbeat run the command below. This will generate a binary
 in the same directory with the name stocksbeat.
 
 ```
@@ -42,44 +42,16 @@ make
 
 ### Run
 
-To run {Beat} with debugging output enabled, run:
+To run stocksbeat with debugging output enabled, run:
 
 ```
-./stocksbeat -c stocksbeat.yml -e -d "*"
-```
-
-
-### Test
-
-To test {Beat}, run the following command:
-
-```
-make testsuite
-```
-
-alternatively:
-```
-make unit-tests
-make system-tests
-make integration-tests
-make coverage-report
-```
-
-The test coverage is reported in the folder `./build/coverage/`
-
-### Update
-
-Each beat has a template for the mapping in elasticsearch and a documentation for the fields
-which is automatically generated based on `fields.yml` by running the following command.
-
-```
-make update
+FINNHUB_TOKEN=<your_finnhub_token> ./stocksbeat -c stocksbeat.yml -e -d "*"
 ```
 
 
 ### Cleanup
 
-To clean  {Beat} source code, run the following command:
+To clean  stocksbeat source code, run the following command:
 
 ```
 make fmt
@@ -90,19 +62,6 @@ To clean up the build directory and generated artifacts, run:
 ```
 make clean
 ```
-
-
-### Clone
-
-To clone {Beat} from the git repository, run the following commands:
-
-```
-mkdir -p ${GOPATH}/src/github.com/tuxiedev/stocksbeat
-git clone https://github.com/tuxiedev/stocksbeat ${GOPATH}/src/github.com/tuxiedev/stocksbeat
-```
-
-
-For further development, check out the [beat developer guide](https://www.elastic.co/guide/en/beats/libbeat/current/new-beat.html).
 
 
 ## Packaging

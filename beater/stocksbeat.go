@@ -66,19 +66,21 @@ func (bt *stocksbeat) Run(b *beat.Beat) error {
 			if err != nil {
 				panic(err)
 			}
-			trade := msg.Data[0]
-			event := beat.Event{
-				Timestamp: time.Unix(0, trade.Time*int64(time.Millisecond)),
-				Fields: common.MapStr{
-					"type": "trade",
-					"trade": common.MapStr{
-						"price":  trade.Price,
-						"volume": trade.Volume,
-						"symbol": trade.Symbol,
-					},
-				},
+			if msg.Type == "trade" {
+				for _, trade := range msg.Data {
+					bt.client.Publish(beat.Event{
+						Timestamp: time.Unix(0, trade.Time*int64(time.Millisecond)),
+						Fields: common.MapStr{
+							"type": "trade",
+							"trade": common.MapStr{
+								"price":  trade.Price,
+								"volume": trade.Volume,
+								"symbol": trade.Symbol,
+							},
+						},
+					})
+				}
 			}
-			bt.client.Publish(event)
 		}
 	}
 }

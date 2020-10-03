@@ -1,5 +1,5 @@
-= {Beat} Docs
+= stocksbeat Docs
 
-Welcome to the {Beat} documentation.
+Welcome to the stocksbeat documentation.
 
 

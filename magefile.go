@@ -19,7 +19,7 @@ import (
 func init() {
 	devtools.SetBuildVariableSources(devtools.DefaultBeatBuildVariableSources)
 
-	devtools.BeatDescription = "One sentence description of the Beat."
+	devtools.BeatDescription = "Stream live trading data"
 	devtools.BeatVendor = "Anish Mashankar"
 	devtools.BeatProjectType = devtools.CommunityProject
 	devtools.CrossBuildMountModcache = true
