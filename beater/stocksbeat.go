@@ -75,7 +75,6 @@ func (bt *stocksbeat) Run(b *beat.Beat) error {
 							"trade": common.MapStr{
 								"price":  trade.Price,
 								"volume": trade.Volume,
-								"symbol": trade.Symbol,
 							},
 						},
 					})

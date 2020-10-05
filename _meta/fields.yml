@@ -3,6 +3,8 @@
   description: >
     Beat for getting live trades on a stock symbol
   fields:
+    - name: symbol
+      type: keyword
     - name: trade
       type: group
       fields:
@@ -10,5 +12,3 @@
           type: float
         - name: volume
           type: long
-        - name: symbol
-          type: keyword
