@@ -27,7 +27,9 @@ jobs:
             fi
         
         - name: Set version
-          run: make set_version VERSION=${GITHUB_REF}
+          run: |
+            chmod +x /home/runner/go/pkg/mod/github.com/elastic/beats/*/dev-tools/set_version
+            make set_version VERSION=${GITHUB_REF}
 
         - name: Release beat
           run: make release
