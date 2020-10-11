@@ -3,10 +3,9 @@
 
 package config
 
-
 type Config struct {
-	Symbols 		[]string     `config:"symbols"`
-	FinnhubToken	string		 `config:"finnhubToken"`
+	Symbols      []string `config:"symbols"`
+	FinnhubToken string   `config:"finnhubToken"`
 }
 
 var DefaultConfig = Config{
