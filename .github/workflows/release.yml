@@ -1,0 +1,16 @@
+name: ReleasePipeline
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+        - name: set version
+          run: make set_version VERSION=${GITHUB_REF}
+        - name: pacakge the build
+          run: make release
+        
