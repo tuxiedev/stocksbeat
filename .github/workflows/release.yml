@@ -9,6 +9,11 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
+        - name: Set up Python 3.7
+          uses: actions/setup-python@v2
+          with:
+            python-version: 3.7
+
         - name: Set up Go 1.x
           uses: actions/setup-go@v2
           with:
@@ -32,5 +37,5 @@ jobs:
             chmod -R 0755 /home/runner/go/pkg/mod/github.com/elastic/beats/*/libbeat/version/version.go
             make set_version VERSION=${GITHUB_REF}
 
-        - name: Release beat
-          run: make release
+        - name: Create release packages
+          run: make release 
