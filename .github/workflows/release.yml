@@ -39,7 +39,7 @@ jobs:
           run: |
             chmod +x /home/runner/go/pkg/mod/github.com/elastic/beats/*/dev-tools/set_version
             chmod -R 0755 /home/runner/go/pkg/mod/github.com/elastic/beats/*/libbeat/version/version.go
-            make set_version VERSION=${{ steps.get_version.outputs.VERSION }}
+            make set_version VERSION=${{ steps.parse_version.outputs.VERSION }}
 
         # - name: Create release packages
         #   run: make release 
