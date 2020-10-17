@@ -31,9 +31,11 @@ jobs:
                 dep ensure
             fi
         
-        - name: parse version
+        - name: Parse version
           id: parse_version
-          run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\/v/}
+          run: |
+            echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\/v/}
+            echo ::set-output name=TAG_NAME::${GITHUB_REF/refs\/tags\//}
 
         - name: Set version
           run: |
@@ -60,4 +62,4 @@ jobs:
           with:
             files: 'build/distributions/*'
             repo-token: ${{ secrets.GITHUB_TOKEN }}
-            release-tag: ${{ github.ref }}
+            release-tag: ${{ steps.parse_version.outputs.TAG_NAME }}

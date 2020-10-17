@@ -386,15 +386,15 @@ shared:
 specs:
   # Community Beats
   community_beat:
-    - os: windows
-      types: [zip]
-      spec:
-        <<: *windows_binary_spec
+    # - os: windows
+    #   types: [zip]
+    #   spec:
+    #     <<: *windows_binary_spec
 
-    - os: darwin
-      types: [tgz]
-      spec:
-        <<: *binary_spec
+    # - os: darwin
+    #   types: [tgz]
+    #   spec:
+    #     <<: *binary_spec
 
     - os: linux
       types: [tgz]
