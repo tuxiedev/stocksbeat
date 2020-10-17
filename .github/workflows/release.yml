@@ -33,7 +33,7 @@ jobs:
         
         - name: parse version
           id: parse_version
-          run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+          run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\/v/}
 
         - name: Set version
           run: |
