@@ -2,9 +2,22 @@
 
 Welcome to stocksbeat.
 
-Ensure that this folder is at the following location:
-`${GOPATH}/src/github.com/tuxiedev/stocksbeat`
+This [Elastic Beat](https://github.com/elastic/beats) streams live trades from NYSE, BIFINANCE and few other stock markets into Elasticsearch indexable format.
 
+## Table of Contents   
+* [Quickstart](#quickstart)
+    * [Configuration](#configuration)
+      * [Configure Elasticsearch and Kibana](#configure-elasticsearch-and-kibana)
+      * [Configure stocksbeat](#configure-stocksbeat)
+    * [Run stocksbeat](#run-stocksbeat)
+* [Development](#development)
+    * [Requirements](#requirements)
+    * [Clone](#clone)
+    * [Init Project](#init-project)
+    * [Build](#build)
+    * [Run](#run)
+    * [Cleanup](#cleanup)
+    * [Packaging](#packaging)
 
 ## Quickstart
 To run this application, you will need an API key from [Finnhub](https://finnhub.io). Please follow their documentation on how to get an API. To summarise, you will need to do the following steps
@@ -30,6 +43,7 @@ $ docker-compose up
 ```
 After Elasticsearch and Kibana have both started on your system, you should be able to see the Kibana UI on http://localhost:5601.
 
+#### Configure stocksbeat
 Now, lets add the configuration to our output in the `stocksbeat.yml` file.
 ```yaml
 # stocksbeat.yml
@@ -78,6 +92,7 @@ So, lets install that template
 ```
 This command will install the index template on the output Elasticsearch cluster we configured earlier.
 
+### Run stocksbeat
 > Come on! Let me see some data already!
 
 Alright alright! Hold on.. one more thing
@@ -94,11 +109,13 @@ Nothing let's start
 Notice why we are using the `-e` flag all the time? Well, its just so that logs are printed on the console too. You can run all the commands without `-e` flag, and the logs will be stored by default in the `logs` directory.
 
 
-As data starts indexing, we can head over to some Kibana dashboards to look at what all we are collecting
-
+As data starts indexing, we can head over to Elasticsearch and see your data indexed there under indices matching the pattern: `stocksbeat-*`
 
 
 ## Development
+
+Ensure that this folder is at the following location:
+`${GOPATH}/src/github.com/tuxiedev/stocksbeat`
 
 ### Requirements
 
