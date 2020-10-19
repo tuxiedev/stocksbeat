@@ -72,6 +72,7 @@ func (bt *stocksbeat) Run(b *beat.Beat) error {
 						Timestamp: time.Unix(0, trade.Time*int64(time.Millisecond)),
 						Fields: common.MapStr{
 							"type": "trade",
+							"symbol": trade.Symbol,
 							"trade": common.MapStr{
 								"price":  trade.Price,
 								"volume": trade.Volume,
