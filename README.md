@@ -4,6 +4,9 @@ Welcome to stocksbeat.
 
 This [Elastic Beat](https://github.com/elastic/beats) streams live trades from NYSE, BIFINANCE and few other stock markets into Elasticsearch indexable format.
 
+![Dashboard](screenshot.png)
+Dashboard contains simulated values
+
 ## Table of Contents   
 * [Quickstart](#quickstart)
     * [Configuration](#configuration)
