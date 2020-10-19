@@ -1008,8 +1008,8 @@ output.elasticsearch:
 #setup.dashboards.kibana_index: .kibana
 
 # The Elasticsearch index name. This overwrites the index name defined in the
-# dashboards and index pattern. Example: stocksbeat-*
-#setup.dashboards.index: stocksbeat-*
+# dashboards and index pattern. Example: testbeat-*
+#setup.dashboards.index:
 
 # Always use the Kibana API for loading the dashboards instead of autodetecting
 # how to install the dashboards by first querying Elasticsearch.
